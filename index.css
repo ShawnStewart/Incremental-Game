@@ -1,0 +1,15 @@
+.Progress {
+  margin: 10px auto;
+}
+
+#widgetProgress {
+  width: 100%;
+  background-color: #dddddd;
+  border: 2px solid black;
+}
+
+#widgetProgress__Bar {
+  width: 0%;
+  height: 20px;
+  background-color: cornflowerblue;
+}
