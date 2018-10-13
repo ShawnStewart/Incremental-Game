@@ -12,11 +12,16 @@ if (localStorage.gameData) {
 const widgetCount = document.getElementById("widgetCount");
 const widgetTotal = document.getElementById("widgetTotal");
 
+// Game Update
 setInterval(() => {
-  localStorage.setItem("gameData", JSON.stringify(gameData));
   widgetCount.innerHTML = gameData.widgetCount;
   widgetTotal.innerHTML = gameData.widgetTotal;
 }, 100);
+
+// Game save
+setInterval(() => {
+  localStorage.setItem("gameData", JSON.stringify(gameData));
+}, 10000);
 
 widgetButton = () => {
   // Set start date if first click.
