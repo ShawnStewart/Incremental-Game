@@ -12,14 +12,18 @@ if (localStorage.gameData) {
   gameData.timeStamp = Date.now();
 }
 
-const widgetCount = document.getElementById("widgetCount");
+const timePlayed = document.getElementById("timePlayed");
 const widgetTotal = document.getElementById("widgetTotal");
+const widgetCount = document.getElementById("widgetCount");
 
 // Game Update
 setInterval(() => {
   console.log("updating", gameData);
-  widgetCount.innerHTML = gameData.widgetCount;
+  timePlayed.innerHTML = `${Math.floor(
+    (gameData.thisSession + gameData.timePlayed) / 60
+  )} minutes, ${(gameData.thisSession + gameData.timePlayed) % 60} seconds`;
   widgetTotal.innerHTML = gameData.widgetTotal;
+  widgetCount.innerHTML = gameData.widgetCount;
   if (gameData.widgetTotal > 0) {
     gameData.thisSession = parseInt((Date.now() - gameData.timeStamp) / 1000);
   }
