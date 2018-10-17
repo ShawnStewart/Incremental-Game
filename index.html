@@ -12,11 +12,13 @@
 <body>
   <div>
     <button id="clearStorage" onclick="clearLocalStorage()">Clear Storage</button>
-    <h3>Time Played: <span id="timePlayed"></span></h3>
-    <h3>Lifetime Widgets: <span id="widgetTotal"></span></h3>
-    <h3>Widgets: <span id="widgetCount"></span>
-    </h3>
-    <button id="widgetButton" onclick="widgetButton()">Create Widget By Hand</button>
+    <h3>Time Played: <span id="timePlayed">?</span></h3>
+    <h3>Lifetime Widgets: <span id="widgetTotal">0</span></h3>
+    <h3>Inventory: <span id="widgetCount">0</span> widgets</h3>
+    <h3>Material: <span id="materialCount">0</span></h3>
+    <h3>Wallet: $<span id="wallet">0</span></h3>
+    <button id="widgetButton" onclick="widgetButton()">Create Widget By
+      Hand</button>
     <div class="Progress">
       <div id="widgetProgress"></div>
     </div>

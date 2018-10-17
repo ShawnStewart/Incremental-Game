@@ -5,8 +5,10 @@ let gameData = {
   widgetTotal: 0,
   widgetCount: 0,
   options: {
-    "0": { value: 1, time: 30 }
-  }
+    "0": { value: 1, time: 25 }
+  },
+  materialCount: 1000,
+  wallet: 0
 };
 
 // Check for saved game
@@ -18,6 +20,8 @@ if (localStorage.gameData) {
 const timePlayed = document.getElementById("timePlayed");
 const widgetTotal = document.getElementById("widgetTotal");
 const widgetCount = document.getElementById("widgetCount");
+const materialCount = document.getElementById("materialCount");
+const wallet = document.getElementById("wallet");
 
 // Game Update
 setInterval(() => {
@@ -27,6 +31,8 @@ setInterval(() => {
   )} minutes, ${(gameData.thisSession + gameData.timePlayed) % 60} seconds`;
   widgetTotal.innerHTML = gameData.widgetTotal;
   widgetCount.innerHTML = gameData.widgetCount;
+  materialCount.innerHTML = gameData.materialCount;
+  wallet.innerHTML = gameData.wallet;
   if (gameData.widgetTotal > 0) {
     gameData.thisSession = parseInt((Date.now() - gameData.timeStamp) / 1000);
   }
@@ -45,15 +51,18 @@ widgetButton = () => {
     gameData.timeStamp = Date.now();
   }
 
-  const progressBar = document.getElementById("widgetProgress");
-  const btn = document.getElementById("widgetButton");
+  if (gameData.materialCount >= 25) {
+    gameData.materialCount -= 25;
+    const progressBar = document.getElementById("widgetProgress");
+    const btn = document.getElementById("widgetButton");
 
-  progressBarUpdate(
-    progressBar,
-    btn,
-    gameData.options["0"].value,
-    gameData.options["0"].time
-  );
+    progressBarUpdate(
+      progressBar,
+      btn,
+      gameData.options["0"].value,
+      gameData.options["0"].time
+    );
+  }
 };
 
 progressBarUpdate = (bar, button, value, time) => {
