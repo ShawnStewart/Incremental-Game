@@ -1,3 +1,15 @@
+// Dashboard
+const timePlayed = document.getElementById("timePlayed");
+const widgetTotal = document.getElementById("widgetTotal");
+const widgetCount = document.getElementById("widgetCount");
+const materialCount = document.getElementById("materialCount");
+const wallet = document.getElementById("wallet");
+
+// Market
+const unitsToSell = document.getElementById("unitsToSell");
+const unitPrice = document.getElementById("unitPrice");
+
+// Game Data variables
 let gameData = {
   timeStamp: Date.now(),
   thisSession: 0,
@@ -17,19 +29,13 @@ if (localStorage.gameData) {
   gameData.timeStamp = Date.now();
 }
 
-const timePlayed = document.getElementById("timePlayed");
-const widgetTotal = document.getElementById("widgetTotal");
-const widgetCount = document.getElementById("widgetCount");
-const materialCount = document.getElementById("materialCount");
-const wallet = document.getElementById("wallet");
-
 // Game Update
 setInterval(() => {
   // console.log("updating", gameData);
-  timePlayed.innerHTML = `${Math.floor(
-    (gameData.thisSession + gameData.timePlayed) / 60
-  )} minutes, ${(gameData.thisSession + gameData.timePlayed) % 60} seconds`;
-  widgetTotal.innerHTML = gameData.widgetTotal;
+  // timePlayed.innerHTML = `${Math.floor(
+  //   (gameData.thisSession + gameData.timePlayed) / 60
+  // )} minutes, ${(gameData.thisSession + gameData.timePlayed) % 60} seconds`;
+  // widgetTotal.innerHTML = gameData.widgetTotal;
   widgetCount.innerHTML = gameData.widgetCount;
   materialCount.innerHTML = gameData.materialCount;
   wallet.innerHTML = gameData.wallet;
@@ -44,6 +50,15 @@ setInterval(() => {
   gameData.timeStamp = Date.now() - 1000;
   localStorage.setItem("gameData", JSON.stringify(gameData));
 }, 20000);
+
+// Market
+updateUnits = value => {
+  unitsToSell.value = Math.floor(gameData.widgetCount * value);
+};
+
+updatePrice = value => {
+  unitPrice.value = Math.abs(unitPrice.value * value).toFixed(2);
+};
 
 widgetButton = () => {
   if (!gameData.widgetTotal) {

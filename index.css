@@ -1,5 +1,33 @@
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 body * {
   box-sizing: border-box;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 0 8px;
+}
+
+#Dashboard {
+  display: flex;
+}
+
+.Dashboard__Section {
+  width: 50%;
 }
 
 .Progress {
@@ -18,7 +46,15 @@ body * {
   border-radius: 20px 8px 8px 20px;
 }
 
-.Buyable {
+.Container {
   border: 1px solid black;
   padding: 15px;
+  margin: 8px;
+}
+
+.Container__Inner {
+  width: 100%;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 8px 0;
 }
