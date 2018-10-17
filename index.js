@@ -3,7 +3,10 @@ let gameData = {
   thisSession: 0,
   timePlayed: 0,
   widgetTotal: 0,
-  widgetCount: 0
+  widgetCount: 0,
+  speeds: {
+    0: 20
+  }
 };
 
 // Check for saved game
@@ -44,20 +47,25 @@ widgetButton = () => {
 
   const progressBar = document.getElementById("widgetProgress");
   const btn = document.getElementById("widgetButton");
-  btn.disabled = true;
+
+  progressBarUpdate(progressBar, btn, 1, 20);
+};
+
+progressBarUpdate = (bar, button, value, time) => {
+  button.disabled = true;
   let progress = 0;
-  const widgetInterval = setInterval(() => {
+  const progressInterval = setInterval(() => {
     if (progress >= 100) {
-      clearInterval(widgetInterval);
-      btn.disabled = false;
-      gameData.widgetCount++;
-      gameData.widgetTotal++;
-      progressBar.style.width = "0%";
+      clearInterval(progressInterval);
+      button.disabled = false;
+      gameData.widgetCount += value;
+      gameData.widgetTotal += value;
+      bar.style.width = "0%";
     } else {
       progress++;
-      progressBar.style.width = `${progress}%`;
+      bar.style.width = `${progress}%`;
     }
-  }, 20);
+  }, time);
 };
 
 clearLocalStorage = () => {
