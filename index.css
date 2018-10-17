@@ -17,3 +17,8 @@ body * {
   background-color: cornflowerblue;
   border-radius: 20px 8px 8px 20px;
 }
+
+.Buyable {
+  border: 1px solid black;
+  padding: 15px;
+}

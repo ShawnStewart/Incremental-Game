@@ -4,8 +4,8 @@ let gameData = {
   timePlayed: 0,
   widgetTotal: 0,
   widgetCount: 0,
-  speeds: {
-    0: 20
+  options: {
+    "0": { value: 1, time: 30 }
   }
 };
 
@@ -21,7 +21,7 @@ const widgetCount = document.getElementById("widgetCount");
 
 // Game Update
 setInterval(() => {
-  console.log("updating", gameData);
+  // console.log("updating", gameData);
   timePlayed.innerHTML = `${Math.floor(
     (gameData.thisSession + gameData.timePlayed) / 60
   )} minutes, ${(gameData.thisSession + gameData.timePlayed) % 60} seconds`;
@@ -48,7 +48,12 @@ widgetButton = () => {
   const progressBar = document.getElementById("widgetProgress");
   const btn = document.getElementById("widgetButton");
 
-  progressBarUpdate(progressBar, btn, 1, 20);
+  progressBarUpdate(
+    progressBar,
+    btn,
+    gameData.options["0"].value,
+    gameData.options["0"].time
+  );
 };
 
 progressBarUpdate = (bar, button, value, time) => {
@@ -66,6 +71,15 @@ progressBarUpdate = (bar, button, value, time) => {
       bar.style.width = `${progress}%`;
     }
   }, time);
+};
+
+upgrade = () => {
+  if (gameData.widgetCount >= 10) {
+    console.log("upgrading!!");
+    gameData.widgetCount -= 10;
+    gameData.options["0"].time *= 0.5;
+  }
+  console.log("insufficient funz");
 };
 
 clearLocalStorage = () => {

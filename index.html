@@ -10,14 +10,22 @@
 </head>
 
 <body>
-  <button id="clearStorage" onclick="clearLocalStorage()">Clear Storage</button>
-  <h3>Time Played: <span id="timePlayed"></span></h3>
-  <h3>Lifetime Widgets: <span id="widgetTotal"></span></h3>
-  <h3>Widgets: <span id="widgetCount"></span>
-  </h3>
-  <button id="widgetButton" onclick="widgetButton()">Create Widget By Hand</button>
-  <div class="Progress">
-    <div id="widgetProgress"></div>
+  <div>
+    <button id="clearStorage" onclick="clearLocalStorage()">Clear Storage</button>
+    <h3>Time Played: <span id="timePlayed"></span></h3>
+    <h3>Lifetime Widgets: <span id="widgetTotal"></span></h3>
+    <h3>Widgets: <span id="widgetCount"></span>
+    </h3>
+    <button id="widgetButton" onclick="widgetButton()">Create Widget By Hand</button>
+    <div class="Progress">
+      <div id="widgetProgress"></div>
+    </div>
+  </div>
+  <div>
+    <div class='Buyable'>
+      <p>Increase widget making by 50%</p>
+      <button onclick="upgrade()">Purchase</button>
+    </div>
   </div>
 </body>
 
