@@ -59,10 +59,13 @@ updateUnits = value => {
 
 updatePrice = value => {
   unitPrice.value = Math.abs(unitPrice.value * value).toFixed(2);
+  updateDemand();
 };
 
 updateDemand = () => {
-  unitDemand.innerHTML = "Demand: %";
+  let result = parseInt((1 / unitPrice.value) * 200);
+  if (result > 500) result = 500;
+  unitDemand.innerHTML = `Demand: ${result}%`;
 };
 
 widgetButton = () => {
