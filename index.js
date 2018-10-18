@@ -8,6 +8,7 @@ const wallet = document.getElementById("wallet");
 // Market
 const unitsToSell = document.getElementById("unitsToSell");
 const unitPrice = document.getElementById("unitPrice");
+const unitDemand = document.getElementById("unitDemand");
 
 // Game Data variables
 let gameData = {
@@ -58,6 +59,10 @@ updateUnits = value => {
 
 updatePrice = value => {
   unitPrice.value = Math.abs(unitPrice.value * value).toFixed(2);
+};
+
+updateDemand = () => {
+  unitDemand.innerHTML = "Demand: %";
 };
 
 widgetButton = () => {

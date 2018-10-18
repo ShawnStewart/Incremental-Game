@@ -44,10 +44,10 @@
         </div>
         <div>Sell Price:
           <button onclick="updatePrice(.95)">-5%</button>
-          <input id='unitPrice' value='0.00' type="number" step="0.01" min="0"></input>
+          <input id='unitPrice' value='0.00' type="number" step="0.01" min="0" onchange="updateDemand()"></input>
           <button onclick="updatePrice(1.05)">+5%</button>
         </div>
-        <div>Demand: 0%</div>
+        <div id='unitDemand'>Demand: 0%</div>
         <button>Submit</button>
       </div>
     </div>
