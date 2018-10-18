@@ -1,16 +1,20 @@
-// Dashboard
+// Clear storage
+clearLocalStorage = () => {
+  localStorage.removeItem("gameData");
+  location.reload();
+};
+
+// Variables
 const timePlayed = document.getElementById("timePlayed");
 const widgetTotal = document.getElementById("widgetTotal");
 const widgetCount = document.getElementById("widgetCount");
 const materialCount = document.getElementById("materialCount");
 const wallet = document.getElementById("wallet");
 
-// Market
 const unitsToSell = document.getElementById("unitsToSell");
 const unitPrice = document.getElementById("unitPrice");
 const unitDemand = document.getElementById("unitDemand");
 
-// Game Data variables
 let gameData = {
   timeStamp: Date.now(),
   thisSession: 0,
@@ -58,16 +62,25 @@ updateUnits = value => {
 };
 
 updatePrice = value => {
-  unitPrice.value = Math.abs(unitPrice.value * value).toFixed(2);
+  let increase = Math.abs(unitPrice.value * value).toFixed(2);
+  if (unitPrice.value === increase)
+    increase = (Number(increase) + 0.01).toFixed(2);
+  unitPrice.value = increase;
   updateDemand();
 };
 
 updateDemand = () => {
   let result = parseInt((1 / unitPrice.value) * 200);
   if (result > 500) result = 500;
+  if (isNaN(result)) result = 0;
   unitDemand.innerHTML = `Demand: ${result}%`;
 };
 
+submitNewOffer = () => {
+  console.log("submitting offer");
+};
+
+// Production
 widgetButton = () => {
   if (!gameData.widgetTotal) {
     console.log("first click");
@@ -105,6 +118,7 @@ progressBarUpdate = (bar, button, value, time) => {
   }, time);
 };
 
+// Upgrade
 upgrade = () => {
   if (gameData.widgetCount >= 10) {
     console.log("upgrading!!");
@@ -112,9 +126,4 @@ upgrade = () => {
     gameData.options["0"].time *= 0.5;
   }
   console.log("insufficient funz");
-};
-
-clearLocalStorage = () => {
-  localStorage.removeItem("gameData");
-  location.reload();
 };
